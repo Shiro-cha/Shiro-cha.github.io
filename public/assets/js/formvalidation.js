@@ -12,6 +12,9 @@ $(function(){
 				$("#erroremail").html(data.erroremail);
 				$("#errorphone").html(data.errorphone);
 				$("#errormessage").html(data.errormessage);
+				if(data.success){
+					$("#success").html(data.successString);
+				}
             }
         });
     });

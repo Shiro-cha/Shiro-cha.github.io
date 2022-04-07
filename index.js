@@ -18,7 +18,7 @@ app.use(bodyparser.json());
 console.log(verification);
 app.post("/validation",function(req,res){
     let data = req.body;
-	let dataToSend = {errornom:"",erroremail:"",errorphone:"",errormessage:"",success:true};
+	let dataToSend = {errornom:"",erroremail:"",errorphone:"",errormessage:"",success:true,successString:"Votre message a été bien envoyé. Merci de m'avoir contacter :) "};
     let name = data.name;
     let email = data.email;
     let phone = data.phone;
@@ -42,7 +42,7 @@ app.post("/validation",function(req,res){
 		dataToSend.success = false;
 	}
 	
-    res.send(JSON.stringify(dataToSend));
+   
 	
 	if(dataToSend.success){
 		
@@ -62,13 +62,21 @@ app.post("/validation",function(req,res){
 		
 		transporter.sendMail(mailoptions,function(err,info){
 			if(err){
-				console.log(err);
+				console.log("erroeeeeeeee");
+				dataToSend.successString = "Une erreur s'est produit :(. Reessayer plutard";
+				
 			}else{
 				console.log("email send :"+info.response);
+				dataToSend.successString ="Votre message a été bien envoyé. Merci de m'avoir contacter :) ";
 			}
 		});
 		
+	
+		res.send(JSON.stringify(dataToSend));
+	}else{
+		res.send(JSON.stringify(dataToSend));
 	}
+	
 
 });
 
