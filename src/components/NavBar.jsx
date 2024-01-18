@@ -11,35 +11,6 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 // Images
 import Logo from "../images/profile-pic(5).png";
 
-// #region styled-components
-const StyledSwitch = styled.label`
-  /* Slider pill */
-  display: flex;
-  width: 3.2rem;
-  font-size: 1.5rem;
-  border-radius: 30px;
-  transition: var(--transition);
-  border: 2px solid;
-
-  /* Hide defualt checkbox */
-  input[type="checkbox"] {
-    height: 0;
-    width: 0;
-    opacity: 0;
-  }
-
-  /* Move span when checked */
-  input[type="checkbox"]:checked + div {
-    transform: translateX(100%);
-  }
-
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: var(--transition);
-  }
-`;
 
 const FixedNavSpacer = styled.div`
   height: var(--nav-height);
@@ -93,6 +64,10 @@ export default function NavBar({ Logo }) {
               className="rounded-circle"
             />
           </Navbar.Brand>
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            onClick={toggleExpanded}
+          />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav navbarScroll className="me-auto">
               {pathname === "/"

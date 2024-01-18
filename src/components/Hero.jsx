@@ -92,8 +92,7 @@ export default function Hero() {
               <SocialLinks />
             </div>
           </Col>
-          <Col>
-          </Col>
+          
         </Row>
         <Row className="align-items-end down-container">
           <Col className="m-4 text-center">
